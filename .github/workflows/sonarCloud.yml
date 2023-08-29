@@ -4,7 +4,9 @@ on:
     branches:
       - dev
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches:
+      - "**"
+    types: [ opened, synchronize, reopened ]
   workflow_dispatch:
 jobs:
   build:
