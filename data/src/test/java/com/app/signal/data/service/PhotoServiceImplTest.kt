@@ -3,7 +3,6 @@ package com.app.signal.data.service
 import app.cash.turbine.test
 import com.app.signal.data.service.photo.PhotoServiceImpl
 import com.app.signal.domain.model.State
-import com.app.signal.domain.repository.IntState
 import com.app.signal.domain.repository.PhotoRepository
 import com.app.signal.domain.service.AppStorage
 import io.mockk.every
@@ -12,8 +11,6 @@ import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
-import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
