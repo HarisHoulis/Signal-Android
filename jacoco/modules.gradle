@@ -5,7 +5,7 @@ jacoco {
 }
 
 tasks.withType(Test) {
-    jacoco.includeNoLocationClasses = true
+    jacoco.includeNoLocationClasses = false
 }
 
 project.afterEvaluate {
@@ -16,8 +16,10 @@ project.afterEvaluate {
         description = "Generate Jacoco coverage reports for the debug build."
 
         reports {
-            html.enabled = true
+            html.required = false
+            xml.required = true
             xml.enabled = true
+//            xml.outputLocation = layout.buildDirectory.file("jacoco")
         }
 
         def excludes = [

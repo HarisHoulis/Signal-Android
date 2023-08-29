@@ -1,5 +1,7 @@
 import com.app.signal.buildSrc.AndroidTarget
 import com.app.signal.buildSrc.Libs
+import com.app.signal.buildSrc.TestLibraries
+
 plugins {
     id "com.android.library"
     id "org.jetbrains.kotlin.android"
@@ -9,7 +11,9 @@ plugins {
     id "kotlinx-serialization"
     id "kotlin-kapt"
 }
+
 apply from: '../jacoco/modules.gradle'
+
 android {
     compileSdkVersion AndroidTarget.compileSdk
 
@@ -33,7 +37,14 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
 }
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -52,4 +63,8 @@ dependencies {
 
     implementation Libs.Hilt.implementation
     kapt Libs.Hilt.kapt
+
+    testImplementation TestLibraries.jupiter_api
+    testImplementation TestLibraries.jupiter_params
+    testRuntimeOnly TestLibraries.jupiter_engine
 }
