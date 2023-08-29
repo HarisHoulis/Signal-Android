@@ -19,7 +19,8 @@ class PhotoRoomFake(private val photoDaoFake: PhotoDaoFake) : PhotoLocalStore {
                 PhotoEntity(
                     dto.id,
                     ImageDto(dto.img.smallImageUrl, dto.img.largeImageUrl, dto.img.thumbNailUrl),
-                    dto.title
+                    dto.title,
+                    false
                 )
             )
             emit(result)
@@ -29,6 +30,13 @@ class PhotoRoomFake(private val photoDaoFake: PhotoDaoFake) : PhotoLocalStore {
     override suspend fun removePhoto(id: String): Flow<Int> {
         return flow {
             val result = photoDaoFake.deletePhoto(id)
+            emit(result)
+        }
+    }
+
+    override suspend fun markPhotoAsFavourite(id: String): Flow<Int> {
+        return flow {
+            val result = photoDaoFake.markAsFavourite(id)
             emit(result)
         }
     }
