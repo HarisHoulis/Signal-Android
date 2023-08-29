@@ -9,7 +9,7 @@ data class PhotoEntity(
     override val id: String,
     val image: AnyImageDto,
     override val title: String,
-    val isFavourite: Boolean
+    override val isFavourite: Boolean
 ) : Photo {
     override val img: AnyImageDto
         get() = image

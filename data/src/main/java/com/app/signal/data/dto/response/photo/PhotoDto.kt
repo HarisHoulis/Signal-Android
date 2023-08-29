@@ -24,6 +24,7 @@ data class PhotoListDto(
 data class PhotoDto(
     override val id: String,
     override val title: String,
+    override val isFavourite: Boolean,
     val owner: String,
     val secret: String,
     val server: String,

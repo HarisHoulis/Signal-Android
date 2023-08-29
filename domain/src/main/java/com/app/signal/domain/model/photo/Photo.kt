@@ -6,6 +6,7 @@ interface Photo {
     val id: String
     val img: Image
     val title: String
+    val isFavourite: Boolean
 }
 
 interface Image {

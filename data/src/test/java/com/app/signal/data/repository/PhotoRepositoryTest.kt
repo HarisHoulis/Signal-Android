@@ -226,6 +226,35 @@ class PhotoRepositoryTest {
         assert(nonEmptySavedPhotos[1].data?.isEmpty() == true)
     }
 
+    @Test
+    fun markAsFavourite(): Unit = runTest {
+        val photoId = "testId"
+        val saveFlow = photoRepository.savePhoto(
+            PhotoEntity(
+                photoId,
+                ImageDto(null, null, null),
+                title = "test title",
+                isFavourite = false
+            )
+        ).toList()
+
+        assert(saveFlow[0].isLoading)
+        assert(saveFlow[1].isSuccess)
+
+        val markPhotoFlow = photoRepository.markPhotoAsFavourite(photoId).toList()
+
+        // First State is Loading
+        assert(markPhotoFlow[0].isLoading)
+
+        // Second State should be success
+        assert(markPhotoFlow[1].isSuccess)
+
+        val savedPhotos = photoRepository.getSavedPhotos().toList()
+        val savedPhoto = savedPhotos[1].data?.first()
+        assert(savedPhoto?.id == photoId)
+        assert(savedPhoto?.isFavourite == true)
+    }
+
     @AfterEach
     fun tearDown() {
         mockWebServer.shutdown()
