@@ -22,7 +22,8 @@ object Versions {
     const val lifecycle = "2.5.1"
     const val junit_jupiter = "5.7.0"
     const val jacoco = "0.8.7"
-
+    const val mockk = "1.13.7"
+    const val turbine = "1.0.0"
 }
 
 object TestLibraries {
@@ -30,6 +31,8 @@ object TestLibraries {
     const val androidXJUnit = "androidx.test.ext:junit:${Versions.androidXJUnit}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val turbine = "app.cash.turbine:turbine:${Versions.turbine}"
     const val jupiter_api = "org.junit.jupiter:junit-jupiter-api:${Versions.junit_jupiter}"
     const val jupiter_params = "org.junit.jupiter:junit-jupiter-params:${Versions.junit_jupiter}"
     const val jupiter_engine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit_jupiter}"
