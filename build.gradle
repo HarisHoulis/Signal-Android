@@ -24,6 +24,7 @@ subprojects {
         properties {
             property "sonar.sources", "src/main"
             property "sonar.tests", "src/test"
+            property "sonar.exclusions", "**/*Dto.kt,**/*Fragment.kt"
             // I was testing with JaCoCo, so the next line is not needed if you're using some other tool
             property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/debugCoverage/debugCoverage.xml,build/reports/tests/testDebugUnitTest/index.html"
             property "sonar.host.url", "http://<hostname>:<port>"
