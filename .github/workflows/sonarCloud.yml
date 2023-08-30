@@ -4,7 +4,9 @@ on:
     branches:
       - dev
   pull_request:
-    types: [opened, synchronize, reopened]
+    branches:
+      - "**"
+    types: [ opened, synchronize, reopened ]
   workflow_dispatch:
 jobs:
   build:
@@ -35,4 +37,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew build sonar --info
+        run: >
+          ./gradlew debugCoverage sonar
+#          -Dsonar.coverageReportPaths=build/reports/jacoco/debugCoverage/deb?ugCoverage.xml

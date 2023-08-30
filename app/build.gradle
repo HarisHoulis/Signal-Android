@@ -10,8 +10,6 @@ plugins {
     id "dagger.hilt.android.plugin"
 }
 
-apply from: '../jacoco/modules.gradle'
-
 android {
     namespace AndroidTarget.nameSpace
     compileSdk AndroidTarget.compileSdk

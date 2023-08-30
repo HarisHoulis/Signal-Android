@@ -1,6 +1,5 @@
 import com.app.signal.buildSrc.AndroidTarget
 import com.app.signal.buildSrc.Libs
-import com.app.signal.buildSrc.Module
 import com.app.signal.buildSrc.TestLibraries
 import com.app.signal.buildSrc.UnitTest
 
@@ -25,7 +24,6 @@ android {
     }
 
     compileOptions {
-        coreLibraryDesugaringEnabled true
 
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

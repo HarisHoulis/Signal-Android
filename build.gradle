@@ -17,3 +17,41 @@ sonar {
         property "sonar.host.url", "https://sonarcloud.io"
     }
 }
+
+subprojects {
+    version = '1.0'
+    sonar {
+        properties {
+            property "sonar.sources", "src/main"
+            property "sonar.tests", "src/test"
+            // I was testing with JaCoCo, so the next line is not needed if you're using some other tool
+            property "sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/debugCoverage/debugCoverage.xml,build/reports/tests/testDebugUnitTest/index.html"
+            property "sonar.host.url", "http://<hostname>:<port>"
+        }
+    }
+}
+
+project(":app") {
+    sonar {
+        skipProject = true
+    }
+}
+
+project(":common") {
+    sonar {
+        skipProject = true
+    }
+}
+
+project(":di") {
+    sonar {
+        skipProject = true
+    }
+}
+
+project(":utils") {
+    sonar {
+        skipProject = true
+    }
+}
+
