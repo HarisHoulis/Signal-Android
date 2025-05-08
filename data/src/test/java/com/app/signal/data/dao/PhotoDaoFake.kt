@@ -20,6 +20,17 @@ class PhotoDaoFake(private val appDatabaseFake: SignalDatabaseFake) : PhotoDao()
         }
     }
 
+    override suspend fun markAsFavourite(id: String): Int {
+        val photoFound = appDatabaseFake.savedPhotos.filter { it.id == id }
+        return if (photoFound.isNotEmpty()) {
+            appDatabaseFake.savedPhotos.removeIf { it.id == id }
+            appDatabaseFake.savedPhotos.add(photoFound.first().copy(isFavourite = true))
+            1
+        } else {
+            -1
+        }
+    }
+
     override suspend fun insert(obj: PhotoEntity): Long {
         val result = appDatabaseFake.savedPhotos.add(obj)
         return if (result) {
